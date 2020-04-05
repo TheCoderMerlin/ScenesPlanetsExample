@@ -1,4 +1,8 @@
-# ScenesShell
+# ScenesPlanetExample
 
-An empty shell to serve as a starting point for using Scenes.
+This example demonstrates:
+* A Button class
+* Rotation about an arbitrary object
+* Detecting clicks on transformed objects
+
 
