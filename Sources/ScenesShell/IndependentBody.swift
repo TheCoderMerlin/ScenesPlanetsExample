@@ -3,7 +3,8 @@ import Scenes
 
 class IndependentBody : RenderableEntity,
                         EntityMouseDragHandler,
-                        EntityMouseDownHandler, EntityMouseUpHandler {
+                        EntityMouseDownHandler, EntityMouseUpHandler,
+                        MouseUpHandler {
     let activeFillStyle = FillStyle(color:Color(.red))
     let fillStyle : FillStyle
     let circle : Ellipse
@@ -21,9 +22,11 @@ class IndependentBody : RenderableEntity,
         dispatcher.registerEntityMouseDragHandler(handler: self)
         dispatcher.registerEntityMouseDownHandler(handler: self)
         dispatcher.registerEntityMouseUpHandler(handler: self)
+        dispatcher.registerMouseUpHandler(handler: self)
     }
 
     override func teardown() {
+        dispatcher.unregisterMouseUpHandler(handler:self)
         dispatcher.unregisterEntityMouseUpHandler(handler:self)
         dispatcher.unregisterEntityMouseDownHandler(handler:self)
         dispatcher.unregisterEntityMouseDragHandler(handler:self)
@@ -56,6 +59,10 @@ class IndependentBody : RenderableEntity,
     }
 
     func onEntityMouseUp(globalLocation:Point) {
+        isActive = false
+    }
+
+    func onMouseUp(globalLocation:Point) {
         isActive = false
     }
 
