@@ -39,7 +39,7 @@ class IndependentBody : RenderableEntity,
     }
 
     override func hitTest(globalLocation:Point) -> Bool {
-        let distance = transformedCenter().distance(target:globalLocation)
+        let distance = transformedCenter().distance(to:globalLocation)
         let radius = Double(circle.radiusX)
         let hit = distance <= radius
         return hit
@@ -51,7 +51,7 @@ class IndependentBody : RenderableEntity,
     }
 
     func onEntityMouseDrag(globalLocation:Point, movement:Point) {
-        circle.center.moveBy(offset:movement)
+        circle.center += movement
     }
 
     func onEntityMouseDown(globalLocation:Point) {

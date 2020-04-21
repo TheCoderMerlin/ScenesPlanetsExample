@@ -25,9 +25,9 @@ class DependentBody : IndependentBody {
         circle.center = Point(x:targetCenter.x + targetRadius + distance + circle.radiusX, y:targetCenter.y)
 
         // Update transforms
-        let preTranslate = Transform(translate:DoublePoint(point:targetCenter))
+        let preTranslate = Transform(translate:DoublePoint(targetCenter))
         let rotate = Transform(rotateRadians:radians)
-        let postTranslate = Transform(translate:DoublePoint(point:targetCenter.negated()))
+        let postTranslate = Transform(translate:DoublePoint(-targetCenter))
         setTransforms(transforms:[preTranslate, rotate, postTranslate])
 
         // Move around the orbit (but only if our layer says we should)
